@@ -678,7 +678,6 @@ def edit(task_id: int, task: str):
     # check if task exists
     if task_id and task_id <= len(tasks):
         old_task = tasks[task_id - 1]['name']
-        tasks[task_id - 1]['name'] = task
     else:
         center_print(
             f'\nTask #{task_id} was not found, pls choose an existing ID\n',
@@ -694,10 +693,11 @@ def edit(task_id: int, task: str):
     if not typer.confirm(
         f'Are you sure you want to edit Task #{task_id}?', show_default=True
     ):
-        typer.clear()
+        console.clear()
         print_tasks()
         raise typer.Exit()
 
+    tasks[task_id - 1]['name'] = task
     Settings().write_settings(settings)
-    typer.clear()
+    console.clear()
     print_tasks()

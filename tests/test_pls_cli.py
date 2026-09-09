@@ -207,7 +207,7 @@ def test_edit_task_aborted(mock_write_settings, mock_get_settings):
     assert 'Edited Task: Task 2 edited' in output
     assert 'Are you sure you want to edit Task #2? [y/N]: N' in output
     assert '1    Task 1            ○' in output
-    assert '2    Task 2 edited     ○' in output
+    assert '2    Task 2            ○' in output
 
 
 @patch(
